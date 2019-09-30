@@ -8,7 +8,7 @@ class PupperImage extends React.Component {
     render() {
         const imageLink = this.props.imageLink;
         return (
-            <div className="imageFrame">
+            <div id="imageFrame">
                 <img
                     src={imageLink}
                     alt="A good boy" />
@@ -21,7 +21,7 @@ class PupperImage extends React.Component {
 class ImageInfoPanel extends React.Component {
     render() {
         return (
-            <div className="imageInfoPanel">
+            <div id="imageInfoPanel">
                 <p>Links will go here:</p>
                 <ul>
                     <li><a href="instagram.com"> Instagram </a></li>
@@ -71,7 +71,7 @@ class ButtonPanel extends React.Component {
 
     render() {
         return (
-            <div className="ButtonPanel">
+            <div id="buttonPanel">
                 <PupperButton text="Kiss Pupper!" onClick={this.handleKiss} />
                 <PupperButton text="Pet Pupper!" onClick={this.handlePet} />
                 <PupperButton text="Next Pupper!" onClick={this.props.nextPupper} />
@@ -116,11 +116,11 @@ class PupperBox extends React.Component {
                 this.state.unsplashDatum.urls.small
             } />
         } else {
-            pupperImage = <p>Loading...</p>
+            pupperImage = <p id="imageFrame">Loading...</p>
         };
         //TODO pass img object through to PupperImage
         return (
-            <div className="foregroundBox">
+            <div id="foregroundBox">
                 {pupperImage}
                 <ImageInfoPanel />
                 <ButtonPanel nextPupper={this.requestRandomPupper} />
@@ -132,7 +132,7 @@ class PupperBox extends React.Component {
 class NavigationBox extends React.Component {
     render() {
         return (
-            <div className="NavigationBox">
+            <div id="navigationBox">
                 <p>Impress | Home | Other Stuff</p>
             </div>
         )
@@ -142,8 +142,8 @@ class NavigationBox extends React.Component {
 class App extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Kissin Puppers!</h1>
+            <div id="app">
+                <h1>Kissing Puppers!</h1>
                 <PupperBox />
                 <NavigationBox />
             </div>
