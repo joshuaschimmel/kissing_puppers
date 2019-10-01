@@ -1,16 +1,22 @@
-body {
+html {
     font-family: "DejaVu Sans", sans-serif;
-    background-color: aqua;
+    font-size: 16px;
+}
+
+body {
+    background-color: rgb(121, 235, 235);
     margin: 0;
 }
 
-p {
-    font-size: 16px;
-}
 a {
     text-decoration: none;
     color: blueviolet;
 }
+
+div {
+    border: 1px solid grey;
+}
+
 
 #app h1 {
     width: 50%;
@@ -28,18 +34,24 @@ a {
 
 }
 
+.vertStretchDiv{
+    margin: auto 0;
+}
+
 #foregroundBox {
     width: 80%;
     background-color: #fff;
     margin: 0 auto;
-    padding: 30px 5px 50px;
+    padding: 50px 10px;
     border-radius: 50px;
+    display: block;
 }
 
 
 
 #buttonPanel {
-    
+    display:flex;
+    flex-direction: row-reverse;
 }
 
 #imageInfoPanel {
@@ -48,6 +60,12 @@ a {
 
 #imageFrame {
     border: 2px solid rgba(20,20,20,0.5);
+}
+
+#imageFrame *{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 
