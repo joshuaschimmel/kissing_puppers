@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import API from './api'
+import API from './api';
 
 
 class PupperImage extends React.Component {
@@ -22,13 +22,11 @@ class ImageInfoPanel extends React.Component {
     render() {
         return (
             <div id="imageInfoPanel">
-                <p>Links will go here:</p>
-                <ul>
-                    <li><a href="instagram.com"> Instagram </a></li>
-                    <li><a href="reddit.com"> Reddit </a></li>
-                    <li><a href="unsplash.com"> Unsplash </a></li>
-                    <li><a href="#"> Download this image </a></li>
-                </ul>
+                <a id="instaB" href="instagram.com"> I </a>
+                <a id="redditB" href="reddit.com"> R </a>
+                <a id="unspB" href="unsplash.com"> U </a>
+                <a id="downlB" href="#"> D </a>
+
             </div>
         )
     }
@@ -37,9 +35,9 @@ class ImageInfoPanel extends React.Component {
 class PupperButton extends React.Component {
     render() {
         return (
-            <button onClick={this.props.onClick}>
+            <div className="pupperButton" onClick={this.props.onClick}>
                 {this.props.text}
-            </button>
+            </div>
         )
     }
 }
@@ -67,7 +65,6 @@ class ButtonPanel extends React.Component {
     handleNextPupper() {
 
     }
-
 
     render() {
         return (
@@ -116,14 +113,18 @@ class PupperBox extends React.Component {
                 this.state.unsplashDatum.urls.small
             } />
         } else {
-            pupperImage = <p id="imageFrame">Loading...</p>
+            pupperImage = (
+                <div id="imageFrame">
+                    <p>Loading...</p>
+                </div>
+            );
         };
         //TODO pass img object through to PupperImage
         return (
             <div id="foregroundBox">
                 {pupperImage}
-                <ImageInfoPanel />
                 <ButtonPanel nextPupper={this.requestRandomPupper} />
+                <ImageInfoPanel />
             </div>
         )
     }
