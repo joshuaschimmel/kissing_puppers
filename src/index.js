@@ -22,11 +22,10 @@ class ImageInfoPanel extends React.Component {
     render() {
         return (
             <div id="imageInfoPanel">
-                <a id="instaB" href="instagram.com"> I </a>
-                <a id="redditB" href="reddit.com"> R </a>
-                <a id="unspB" href="unsplash.com"> U </a>
-                <a id="downlB" href="#"> D </a>
-
+                <a id="instaB" className="clickable" href="instagram.com"> I </a>
+                <a id="redditB" className="clickable" href="reddit.com"> R </a>
+                <a id="unspB" className="clickable" href="unsplash.com"> U </a>
+                <a id="downlB" className="clickable" href="google.com"> D </a>
             </div>
         )
     }
@@ -35,7 +34,7 @@ class ImageInfoPanel extends React.Component {
 class PupperButton extends React.Component {
     render() {
         return (
-            <div className="pupperButton" onClick={this.props.onClick}>
+            <div className="clickable" onClick={this.props.onClick}>
                 {this.props.text}
             </div>
         )
@@ -130,10 +129,10 @@ class PupperBox extends React.Component {
     }
 }
 
-class NavigationBox extends React.Component {
+class NavigationFooter extends React.Component {
     render() {
         return (
-            <div id="navigationBox">
+            <div className="footer">
                 <p>Impress | Home | Other Stuff</p>
             </div>
         )
@@ -146,7 +145,7 @@ class App extends React.Component {
             <div id="app">
                 <h1>Kissing Puppers!</h1>
                 <PupperBox />
-                <NavigationBox />
+                <NavigationFooter />
             </div>
         );
     }
