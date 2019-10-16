@@ -120,7 +120,7 @@ class PupperBox extends React.Component {
         };
         //TODO pass img object through to PupperImage
         return (
-            <div id="foregroundBox">
+            <div id="content_box">
                 {pupperImage}
                 <ButtonPanel nextPupper={this.requestRandomPupper} />
                 <ImageInfoPanel />
@@ -132,8 +132,13 @@ class PupperBox extends React.Component {
 class NavigationFooter extends React.Component {
     render() {
         return (
-            <div className="footer">
-                <p>Impress | Home | Other Stuff</p>
+            <div id="footer">
+                <a className='clickable' href='https://joshuas.uber.space/' target='_self' rel='noreffer'>
+                    Home
+                </a>
+                <a className='clickable' href='https://joshuas.uber.space/imprint.html' target='_self' rel='noreffer'>
+                    Imprint
+                </a>
             </div>
         )
     }
@@ -143,8 +148,11 @@ class App extends React.Component {
     render() {
         return (
             <div id="app">
-                <h1>Kissing Puppers!</h1>
-                <PupperBox />
+                <div>
+                    <h1>Kissing Puppers!</h1>
+                    <PupperBox />
+                </div>
+
                 <NavigationFooter />
             </div>
         );
