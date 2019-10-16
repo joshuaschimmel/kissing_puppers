@@ -1,10 +1,19 @@
-/*
-base: #99b2dd (pale cerulean)
-comp1: #3a405a (charcoal)
-comp2: #f9dec9 (unbleached silk)
-comp3: #e9afa3 (pastel pink)
-comp4: #685044 (medium taupe)
-*/
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #2d3436;
+    --textcolor: #000;
+    --textcolor_light: #fff;
+    --highlight1: #74b9ff;
+    --highlight2: #0984e3;
+    --accentdark: rgba(61, 90, 108, 1);
+    --accentlight: rgba(114, 169, 143, 1);
+}
+
 
 html {
     font-family: "DejaVu Sans", sans-serif;
@@ -13,11 +22,8 @@ html {
 
 body {
     margin: 0;
-    background-color: #f9dec9;
-}
-
-#root, #app{
-    height: auto;
+    background-color: var(--accentlight);
+    color: var(--textcolor);
 }
 
 /* add more selectors potentially */
@@ -30,11 +36,11 @@ h1 {
 }
 
 h1 {
-    margin: 50px auto 40px;
+    margin: 1.5em auto 1em;
     text-align: center;
     font-size: 5.4em;
     font-weight: bold;
-    color: #fff;    
+    color: var(--textcolor_light);    
 }
 
 img {
@@ -46,20 +52,44 @@ p {
     font-size: 1.6em;
 }
 
-#foregroundBox {
-    max-width: 80%;
-    max-height: 80%;
-    height: 80%;
-    background-color: #fff;
-    margin: 0 auto;
-    padding: 50px 15px 15px;
-    border-radius: 50px;
-    display: block;
-    overflow: auto;
+a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2em;
+    color: var(--textcolor_light);
 }
 
-#imageFrame {
-    
+a:hover {
+    color: var(--highlight1);
+}
+
+a:active {
+    color: var(--highlight2);
+}
+
+.clickable:active {
+    transform: translateY(2px);
+}
+
+#app {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Fix the boundaries of this damn box  */
+#content_box {
+    background-color: #fff;
+    border-radius: 50px;
+    height: 800px;
+    max-height: 50em;
 }
 
 #imageFrame *{
@@ -91,9 +121,7 @@ p {
     background-color: #99b2dd;
 }
 
-.clickable:active {
-    transform: translateY(2px);
-}
+
 
 #imageInfoPanel{
     display: flex;
@@ -102,19 +130,15 @@ p {
     justify-content: flex-end;
 }
 
+
 #imageInfoPanel a{
-    display: inline-block;
     margin: 5px 5px;
     width: 40px;
     height: 40px;
     line-height: 40px;
     border-radius: 40px;
     color: #fff;
-    background: #99b2dd;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 2em;
+    background: var(--highlight1);
 }
 
 #imageInfoPanel #instaB {
@@ -127,12 +151,21 @@ p {
     background: #000
 }
 
-.footer {
-    width: 100%;
-    position: fixed;
+#footer {
+    position: absolute;
+    left: 0;
+    right: 0;
     bottom: 0;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     padding: 2px 10px 2px 10px;
-    background: #3a405a;
+    background: var(--background);
     color: #fff;
-    border-top: 1px solid #000;
+    border-top: 2px solid #000;
+}
+
+#footer a{
+    margin: 1em;
 }
