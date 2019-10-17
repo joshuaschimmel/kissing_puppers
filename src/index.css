@@ -69,7 +69,7 @@ a:active {
     color: var(--highlight2);
 }
 
-.clickable:active {
+.button:active {
     transform: translateY(2px);
 }
 
@@ -86,27 +86,26 @@ a:active {
 
 /* Fix the boundaries of this damn box  */
 #content_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     background-color: #fff;
     border-radius: 50px;
     height: 800px;
     max-height: 50em;
 }
 
-#imageFrame *{
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-}
 
-#buttonPanel {
+#button_panel {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 10px auto 5px;
+    margin: 1em auto 0.5em;
 }
 
-#buttonPanel div{
+#button_panel .button{
     display: inline-block;
     margin: 5px;
     padding: 5px;
@@ -117,13 +116,14 @@ a:active {
     font-size: 1.6em;
 }
 
-#buttonPanel div:hover{
+#button_panel .button:hover{
     background-color: #99b2dd;
 }
 
-
-
-#imageInfoPanel{
+#artist_info_panel{
+    align-self: flex-end;
+    max-width: 100%;
+    margin: 1em 2em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -131,7 +131,7 @@ a:active {
 }
 
 
-#imageInfoPanel a{
+#artist_info_panel a{
     margin: 5px 5px;
     width: 40px;
     height: 40px;
@@ -141,13 +141,13 @@ a:active {
     background: var(--highlight1);
 }
 
-#imageInfoPanel #instaB {
+#artist_info_panel #instaB {
     background: midnightblue;
 }
-#imageInfoPanel #redditB {
+#artist_info_panel #redditB {
     background: crimson;
 }
-#imageInfoPanel #unspB {
+#artist_info_panel #unspB {
     background: #000
 }
 
@@ -166,6 +166,6 @@ a:active {
     border-top: 2px solid #000;
 }
 
-#footer a{
+#footer .button{
     margin: 1em;
 }
