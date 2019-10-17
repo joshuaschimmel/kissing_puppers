@@ -8,24 +8,23 @@ class PupperImage extends React.Component {
     render() {
         const imageLink = this.props.imageLink;
         return (
-            <div id="imageFrame">
-                <img
-                    src={imageLink}
-                    alt="A good boy" />
-            </div>
+            <img
+                src={imageLink}
+                alt="A good boy"
+            />
 
         )
     }
 }
 
-class ImageInfoPanel extends React.Component {
+class ArtistInfoPanel extends React.Component {
     render() {
         return (
-            <div id="imageInfoPanel">
-                <a id="instaB" className="clickable" href="instagram.com"> I </a>
-                <a id="redditB" className="clickable" href="reddit.com"> R </a>
-                <a id="unspB" className="clickable" href="unsplash.com"> U </a>
-                <a id="downlB" className="clickable" href="google.com"> D </a>
+            <div id="artist_info_panel">
+                <a id="instaB" className='button' href="instagram.com"> I </a>
+                <a id="redditB" className='button' href="reddit.com"> R </a>
+                <a id="unspB" className='button' href="unsplash.com"> U </a>
+                <a id="downlB" className='button' href="google.com"> D </a>
             </div>
         )
     }
@@ -34,7 +33,7 @@ class ImageInfoPanel extends React.Component {
 class PupperButton extends React.Component {
     render() {
         return (
-            <div className="clickable" onClick={this.props.onClick}>
+            <div className='button' onClick={this.props.onClick}>
                 {this.props.text}
             </div>
         )
@@ -67,7 +66,7 @@ class ButtonPanel extends React.Component {
 
     render() {
         return (
-            <div id="buttonPanel">
+            <div id="button_panel">
                 <PupperButton text="Kiss Pupper!" onClick={this.handleKiss} />
                 <PupperButton text="Pet Pupper!" onClick={this.handlePet} />
                 <PupperButton text="Next Pupper!" onClick={this.props.nextPupper} />
@@ -112,10 +111,9 @@ class PupperBox extends React.Component {
                 this.state.unsplashDatum.urls.small
             } />
         } else {
+            // placeholder
             pupperImage = (
-                <div id="imageFrame">
-                    <p>Loading...</p>
-                </div>
+                <p>Loading...</p>
             );
         };
         //TODO pass img object through to PupperImage
@@ -123,7 +121,7 @@ class PupperBox extends React.Component {
             <div id="content_box">
                 {pupperImage}
                 <ButtonPanel nextPupper={this.requestRandomPupper} />
-                <ImageInfoPanel />
+                <ArtistInfoPanel />
             </div>
         )
     }
@@ -133,10 +131,10 @@ class NavigationFooter extends React.Component {
     render() {
         return (
             <div id="footer">
-                <a className='clickable' href='https://joshuas.uber.space/' target='_self' rel='noreffer'>
+                <a className='button' href='https://joshuas.uber.space/' target='_self' rel='noreffer'>
                     Home
                 </a>
-                <a className='clickable' href='https://joshuas.uber.space/imprint.html' target='_self' rel='noreffer'>
+                <a className='button' href='https://joshuas.uber.space/imprint.html' target='_self' rel='noreffer'>
                     Imprint
                 </a>
             </div>
