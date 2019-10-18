@@ -17,7 +17,6 @@
 
 html {
     font-family: "DejaVu Sans", sans-serif;
-    font-size: 62.5%;
 }
 
 body {
@@ -36,9 +35,9 @@ h1 {
 }
 
 h1 {
-    margin: 1.5em auto 1em;
+    margin: 1.5rem auto 1rem;
     text-align: center;
-    font-size: 5.4em;
+    font-size: 4rem;
     font-weight: bold;
     color: var(--textcolor_light);    
 }
@@ -49,7 +48,7 @@ img {
 }
 
 p {
-    font-size: 1.6em;
+    font-size: 1.5rem;
 }
 
 a {
@@ -57,7 +56,7 @@ a {
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 1.5rem;
     color: var(--textcolor_light);
 }
 
@@ -70,7 +69,7 @@ a:active {
 }
 
 .button:active {
-    transform: translateY(2px);
+    transform: translateY(.5rem);
 }
 
 #app {
@@ -80,40 +79,45 @@ a:active {
     left: 0;
     right: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
 }
+
 
 /* Fix the boundaries of this damn box  */
 #content_box {
+    height: 100vh;
+    max-height: calc(90vh - (4rem + 3rem));
+    width: 70vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    overflow: hidden;
     background-color: #fff;
-    border-radius: 50px;
-    height: 800px;
-    max-height: 50em;
+    border-radius: 2rem;
 }
 
 
 #button_panel {
+    width: 100%;
+    margin: 1rem auto 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 1em auto 0.5em;
 }
 
 #button_panel .button{
     display: inline-block;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #3a405a;
+    margin: 0 .8rem;
+    padding: .5rem;
+    border-radius: .5rem;
     font-weight: bold;
-    font-size: 1.6em;
+    font-size: 1.25rem;
+    color: var(--textcolor_light);
+    background-color: #3a405a;
 }
 
 #button_panel .button:hover{
@@ -123,7 +127,7 @@ a:active {
 #artist_info_panel{
     align-self: flex-end;
     max-width: 100%;
-    margin: 1em 2em;
+    margin: 1rem 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -132,12 +136,12 @@ a:active {
 
 
 #artist_info_panel a{
-    margin: 5px 5px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 40px;
-    color: #fff;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 .25rem;
+    line-height: 3rem;
+    border-radius: 1.5rem;
+    color: var(--textcolor_light);
     background: var(--highlight1);
 }
 
@@ -156,16 +160,17 @@ a:active {
     left: 0;
     right: 0;
     bottom: 0;
+    height: 3rem;
+    padding-right: 1rem;
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
-    padding: 2px 10px 2px 10px;
     background: var(--background);
     color: #fff;
     border-top: 2px solid #000;
 }
 
 #footer .button{
-    margin: 1em;
+    margin: 0.5rem 1rem;
 }

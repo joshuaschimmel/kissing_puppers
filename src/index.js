@@ -146,11 +146,8 @@ class App extends React.Component {
     render() {
         return (
             <div id="app">
-                <div>
-                    <h1>Kissing Puppers!</h1>
-                    <PupperBox />
-                </div>
-
+                <h1>Kissing Puppers!</h1>
+                <PupperBox />
                 <NavigationFooter />
             </div>
         );
