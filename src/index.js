@@ -105,13 +105,15 @@ class PupperBox extends React.Component {
         //render the image when it's loaded
         let pupperImage;
         if (this.state.unsplashDatum) {
+            // unsplash data loaded, setup depending on it here vvv
             pupperImage = <PupperImage imageLink={
                 this.state.unsplashDatum.urls.regular
             } />
-            document.body.style.backgrounColor = this.state.unsplashDatum.color;
+            console.log('Datum color: ' + this.state.unsplashDatum.color)
+            document.body.style.backgroundColor = this.state.unsplashDatum.color;
 
         } else {
-            // placeholder
+            // placeholder, wainting for data
             pupperImage = (
                 <p>Loading...</p>
             );
