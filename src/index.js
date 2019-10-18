@@ -108,7 +108,7 @@ class PupperBox extends React.Component {
             pupperImage = <PupperImage imageLink={
                 this.state.unsplashDatum.urls.regular
             } />
-            this.document.body.background.color = this.state.unsplashDatum.color;
+            document.body.background.color = this.state.unsplashDatum.color;
 
         } else {
             // placeholder
