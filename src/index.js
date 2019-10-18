@@ -82,7 +82,6 @@ class PupperBox extends React.Component {
         this.state = {
             unsplashDatum: null,
         };
-
         this.requestRandomPupper = this.requestRandomPupper.bind(this);
     }
 
@@ -94,7 +93,6 @@ class PupperBox extends React.Component {
     requestRandomPupper() {
         API.get('/random_pupper')
             .then((response) => {
-
                 this.setState({ unsplashDatum: response.data });
             })
             .catch((error) => {
@@ -108,8 +106,10 @@ class PupperBox extends React.Component {
         let pupperImage;
         if (this.state.unsplashDatum) {
             pupperImage = <PupperImage imageLink={
-                this.state.unsplashDatum.urls.small
+                this.state.unsplashDatum.urls.regular
             } />
+            this.document.body.background.color = this.state.unsplashDatum.color;
+
         } else {
             // placeholder
             pupperImage = (
