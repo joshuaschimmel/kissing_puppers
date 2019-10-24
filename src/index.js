@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './footer.css';
 import API from './api';
 
 
@@ -55,7 +56,7 @@ class ArtistInfoPanel extends React.Component {
             <div id="artist_info_panel">
                 {user_name}
                 {twitter}
-                {instagram}Searching
+                {instagram}
                 {unsplash}
                 {download}
             </div>
@@ -166,10 +167,10 @@ class NavigationFooter extends React.Component {
     render() {
         return (
             <div id="footer">
-                <a className='button' href='https://joshuas.uber.space/' target='_self' rel='noreffer'>
+                <a className='footer_link' href='https://joshuas.uber.space/' target='_self' rel='noreffer'>
                     Home
                 </a>
-                <a className='button' href='https://joshuas.uber.space/imprint.html' target='_self' rel='noreffer'>
+                <a className='footer_link' href='https://joshuas.uber.space/imprint.html' target='_self' rel='noreffer'>
                     Imprint
                 </a>
             </div>
