@@ -19,12 +19,45 @@ class PupperImage extends React.Component {
 
 class ArtistInfoPanel extends React.Component {
     render() {
+        let user = this.props.user;
+
+        // only show links to profiles if they exis
+        let user_name = <p>Finding artist data...</p>;
+        let twitter = null;
+        let instagram = null;
+        let unsplash = null;
+        let download = null;
+
+        if (user) {
+            user_name = <p>{user.name}</p>
+            twitter = <a id="twitter" className='button'
+                href={"twitter.com/" + user.twitter_username}>
+                twitter
+                </a>
+
+            instagram = <a id="instagram" className='button'
+                href={"instagram.com/" + user.instagram_username}>
+                instagram
+                </a>
+
+            unsplash = <a id='unsplash' className='button'
+                href={user.links.html}>
+                unsplash
+                </a>
+
+            download = <a id='download' className='button'
+                href={user.links.download}>
+                download
+                </a>
+        }
+
         return (
             <div id="artist_info_panel">
-                <a id="instaB" className='button' href="instagram.com"> I </a>
-                <a id="redditB" className='button' href="reddit.com"> R </a>
-                <a id="unspB" className='button' href="unsplash.com"> U </a>
-                <a id="downlB" className='button' href="google.com"> D </a>
+                {user_name}
+                {twitter}
+                {instagram}Searching
+                {unsplash}
+                {download}
             </div>
         )
     }
@@ -103,27 +136,27 @@ class PupperBox extends React.Component {
 
     render() {
         //render the image when it's loaded
-        let pupperImage;
+        let pupperImage = (
+            <p>Loading...</p>
+        );
+        let user = null;
+
         if (this.state.unsplashDatum) {
             // unsplash data loaded, setup depending on it here vvv
             pupperImage = <PupperImage imageLink={
                 this.state.unsplashDatum.urls.regular
             } />
+            user = this.state.unsplashDatum.user;
+
             console.log('Datum color: ' + this.state.unsplashDatum.color)
             document.body.style.backgroundColor = this.state.unsplashDatum.color;
-
-        } else {
-            // placeholder, wainting for data
-            pupperImage = (
-                <p>Loading...</p>
-            );
         };
-        //TODO pass img object through to PupperImage
+
         return (
             <div id="content_box">
                 {pupperImage}
                 <ButtonPanel nextPupper={this.requestRandomPupper} />
-                <ArtistInfoPanel />
+                <ArtistInfoPanel user={user} />
             </div>
         )
     }
