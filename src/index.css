@@ -73,6 +73,7 @@ a:active {
     transform: translateY(.2rem);
 }
 
+
 #app {
     position: absolute;
     top: 0;
@@ -125,7 +126,8 @@ a:active {
     background-color: #99b2dd;
 }
 
-#artist_info_panel{
+
+#artist_info_panel div{
     align-self: flex-end;
     max-width: 100%;
     margin: 1rem 2rem;
@@ -136,7 +138,7 @@ a:active {
 }
 
 
-#artist_info_panel a{
+#artist_info_panel .button {
     width: 3rem;
     height: 3rem;
     margin: 0 .25rem;
@@ -146,15 +148,7 @@ a:active {
     background: var(--highlight1);
 }
 
-#artist_info_panel #instaB {
-    background: midnightblue;
-}
-#artist_info_panel #redditB {
-    background: crimson;
-}
-#artist_info_panel #unspB {
-    background: #000
-}
+
 /*
 #footer {
     position: absolute;
