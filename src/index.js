@@ -22,6 +22,7 @@ class ArtistInfoPanel extends React.Component {
     render() {
         let user = this.props.user;
 
+        // TODO: check for better pattern
         // only show links to profiles if they exis
         let user_name = <p>Finding artist data...</p>;
         let twitter = null;
@@ -55,10 +56,12 @@ class ArtistInfoPanel extends React.Component {
         return (
             <div id="artist_info_panel">
                 {user_name}
-                {twitter}
-                {instagram}
-                {unsplash}
-                {download}
+                <div>
+                    {twitter}
+                    {instagram}
+                    {unsplash}
+                    {download}
+                </div>
             </div>
         )
     }
