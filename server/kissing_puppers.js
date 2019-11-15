@@ -10,7 +10,7 @@ const data_json = JSON.parse(
 );
 
 const server = http.createServer((req, res) => {
-    console.log(`request was made: ${req.url}`);
+    console.log(`request was made: ${req.url} with method ${req.method}`);
     let body = [];
     req.on('error', (err) => {
         console.error(err);
@@ -27,9 +27,9 @@ const server = http.createServer((req, res) => {
             res.end('Only GET methods are allowed');
             break;
         case 'GET':
-            randomPupper = pupperJSON[Math.floor(Math.random() * pupperJSON.length)];
+            let pupper_datum = data_json[Math.floor(Math.random() * data_json.length)];
             res.writeHead(200, { "Content-Type": "application/json" });
-            res.write(JSON.stringify(randomPupper));
+            res.write(JSON.stringify(pupper_datum));
             res.end();
             break;
         //all other methods are disabled
@@ -42,5 +42,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server starting up at http://${hostname}:${port}/`);
 });
