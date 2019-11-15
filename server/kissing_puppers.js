@@ -5,8 +5,8 @@ const fs = require('fs');
 const hostname = '0.0.0.0';
 const port = 3001;
 
-const pupperJSON = JSON.parse(
-    fs.readFileSync(__dirname + '/response5.json', 'utf8')
+const data_json = JSON.parse(
+    fs.readFileSync(__dirname + '/../data/response5.json', 'utf8')
 );
 
 const server = http.createServer((req, res) => {
