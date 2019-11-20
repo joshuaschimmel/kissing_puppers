@@ -20,7 +20,8 @@ class PupperImage extends React.Component {
 
 class ArtistInfoPanel extends React.Component {
     render() {
-        let user = this.props.user;
+        const user = this.props.datum.user;
+        const links = this.props.datum.links;
 
         // TODO: check for better pattern
         // only show links to profiles if they exis
@@ -33,22 +34,30 @@ class ArtistInfoPanel extends React.Component {
         if (user) {
             user_name = <p>{user.name}</p>
             twitter = <a id="twitter" className='button'
-                href={"twitter.com/" + user.twitter_username}>
+                href={"https://twitter.com/" + user.twitter_username}
+                target="_blank"
+                rel="noopener noreferrer">
                 twitter
                 </a>
 
             instagram = <a id="instagram" className='button'
-                href={"instagram.com/" + user.instagram_username}>
+                href={"https://instagram.com/" + user.instagram_username}
+                target="_blank"
+                rel="noopener noreferrer">
                 instagram
                 </a>
 
             unsplash = <a id='unsplash' className='button'
-                href={user.links.html}>
+                href={links.html}
+                target="_blank"
+                rel="noopener noreferrer">
                 unsplash
                 </a>
 
             download = <a id='download' className='button'
-                href={user.links.download}>
+                href={links.download}
+                target="_blank"
+                rel="noopener noreferrer">
                 download
                 </a>
         }
@@ -143,14 +152,12 @@ class PupperBox extends React.Component {
         let pupperImage = (
             <p>Loading...</p>
         );
-        let user = null;
 
         if (this.state.unsplashDatum) {
             // unsplash data loaded, setup depending on it here vvv
             pupperImage = <PupperImage imageLink={
                 this.state.unsplashDatum.urls.regular
             } />
-            user = this.state.unsplashDatum.user;
 
             console.log('Datum color: ' + this.state.unsplashDatum.color)
             document.body.style.backgroundColor = this.state.unsplashDatum.color;
@@ -160,7 +167,7 @@ class PupperBox extends React.Component {
             <div id="content_box">
                 {pupperImage}
                 <ButtonPanel nextPupper={this.requestRandomPupper} />
-                <ArtistInfoPanel user={user} />
+                <ArtistInfoPanel datum={this.state.unsplashDatum} />
             </div>
         )
     }
