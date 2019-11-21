@@ -22,7 +22,7 @@ html {
 
 body {
     margin: 0;
-    background-color: var(--accentlight);
+    background-color: var(--highlight1);
     color: var(--textcolor);
 }
 
@@ -127,7 +127,7 @@ a:active {
 }
 
 
-#artist_info_panel div{
+#artist_info_panel{
     align-self: flex-end;
     max-width: 100%;
     margin: 1rem 2rem;
@@ -139,11 +139,9 @@ a:active {
 
 
 #artist_info_panel .button {
-    width: 3rem;
-    height: 3rem;
     margin: 0 .25rem;
     line-height: 3rem;
-    border-radius: 1.5rem;
+    border-radius: .5rem;
     color: var(--textcolor_light);
     background: var(--highlight1);
 }
