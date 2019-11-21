@@ -149,27 +149,27 @@ class PupperBox extends React.Component {
 
     render() {
         //render the image when it's loaded
-        let pupperImage = (
-            <p>Loading...</p>
+        let box_content = (
+            <div id="content_box">
+                <p>Loading...</p>
+            </div>
         );
+        
 
         if (this.state.unsplashDatum) {
             // unsplash data loaded, setup depending on it here vvv
-            pupperImage = <PupperImage imageLink={
-                this.state.unsplashDatum.urls.regular
-            } />
+            box_content = (
+                <div id="content_box">
+                    <PupperImage imageLink={this.state.unsplashDatum.urls.regular}/>
+                    <ButtonPanel nextPupper={this.requestRandomPupper}/>
+                    <ArtistInfoPanel datum={this.state.unsplashDatum}/>
+                </div>
+            );
 
             console.log('Datum color: ' + this.state.unsplashDatum.color)
-            document.body.style.backgroundColor = this.state.unsplashDatum.color;
         };
 
-        return (
-            <div id="content_box">
-                {pupperImage}
-                <ButtonPanel nextPupper={this.requestRandomPupper} />
-                <ArtistInfoPanel datum={this.state.unsplashDatum} />
-            </div>
-        )
+        return box_content;
     }
 }
 
@@ -184,7 +184,7 @@ class NavigationFooter extends React.Component {
                     Imprint
                 </a>
             </div>
-        )
+        );
     }
 }
 
