@@ -7,10 +7,10 @@ import API from './api';
 
 class PupperImage extends React.Component {
     render() {
-        const imageLink = this.props.imageLink;
+        const image_location = this.props.image_location;
         return (
             <img
-                src={imageLink}
+                src={image_location}
                 alt="A good boy"
             />
 
@@ -20,8 +20,8 @@ class PupperImage extends React.Component {
 
 class ArtistInfoPanel extends React.Component {
     render() {
-        const user = this.props.datum.user;
-        const links = this.props.datum.links;
+        const links = this.props.links;
+        const user = this.props.user;
 
         // TODO: check for better pattern
         // only show links to profiles if they exis
@@ -121,12 +121,12 @@ class ButtonPanel extends React.Component {
     }
 }
 
-class PupperBox extends React.Component {
+class ContentContainer extends React.Component {
     constructor(props) {
         super(props);
-        // unsplashDatum refers to a single data object from unsplash
+        // object containing image metadata and their location
         this.state = {
-            unsplashDatum: null,
+            image_data: null,
         };
         this.requestRandomPupper = this.requestRandomPupper.bind(this);
     }
@@ -137,9 +137,10 @@ class PupperBox extends React.Component {
 
     // requests a new random datum object from the api
     requestRandomPupper() {
+        this.setState({image_data: null});
         API.get('/random_pupper')
             .then((response) => {
-                this.setState({ unsplashDatum: response.data });
+                this.setState({ image_data: response.data });
             })
             .catch((error) => {
                 // TODO: error handling for different erros
@@ -152,21 +153,23 @@ class PupperBox extends React.Component {
         let box_content = (
             <div id="content_box">
                 <p>Loading...</p>
+                <ButtonPanel nextPupper={this.requestRandomPupper}/>
             </div>
         );
-        
 
-        if (this.state.unsplashDatum) {
+        if (this.state.image_data) {
+            const user = this.state.image_data.user;
+            const links = this.state.image_data.links;
             // unsplash data loaded, setup depending on it here vvv
             box_content = (
                 <div id="content_box">
-                    <PupperImage imageLink={this.state.unsplashDatum.urls.regular}/>
+                    <PupperImage image_location={this.state.image_data.urls.regular}/>
                     <ButtonPanel nextPupper={this.requestRandomPupper}/>
-                    <ArtistInfoPanel datum={this.state.unsplashDatum}/>
+                    <ArtistInfoPanel links={links} user={user}/>
                 </div>
             );
 
-            console.log('Datum color: ' + this.state.unsplashDatum.color)
+            console.log('Datum color: ' + this.state.image_data.color)
         };
 
         return box_content;
@@ -193,7 +196,7 @@ class App extends React.Component {
         return (
             <div id="app">
                 <h1>Kissing Puppers!</h1>
-                <PupperBox />
+                <ContentContainer />
                 <NavigationFooter />
             </div>
         );
