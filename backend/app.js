@@ -1,15 +1,52 @@
-const http = require('http');
-const url = require('url');
-const fs = require('fs');
+// Modules from the tutorial
+const createError = require('http-errors');
 const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+
+const fs = require('fs');
+
+// setup routes
+const indexRouter = require('./routes/index');
 
 
-const hostname = '0.0.0.0';
-const port = 3001;
+let app = express();
 
+// setup database
 const data_json = JSON.parse(
-    fs.readFileSync(__dirname + '/../data/response5.json', 'utf8')
+    fs.readFileSync(__dirname + 'data/response5.json', 'utf8')
 );
+data_json.on('error', console.error.bind(console, 'DB error: '));
+
+// setup express
+app.use(logger('dev'));
+app.use(express.json);
+app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, '../frontend/public')));
+
+app.use('/', indexRouter);
+
+// catch all other routes as 404
+app.use(function(req, res, next){
+    next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in develoment
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+});
+
+module.exports = app;
+
+/*
 
 const server = http.createServer((req, res) => {
     console.log(`request was made: ${req.url} with method ${req.method}`);
@@ -46,3 +83,4 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
     console.log(`Server starting up at http://${hostname}:${port}/`);
 });
+*/
