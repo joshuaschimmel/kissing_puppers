@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint backend/src/js"
+    "lint": "eslint ./backend/src/js",
+    "devstart": "nodemon ./backend/bin/www"
   },
   "browserslist": {
     "production": [
