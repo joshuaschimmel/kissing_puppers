@@ -7,7 +7,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const fs = require('fs');
 
 const apiRouter = require('./routes/api');
 
@@ -18,7 +17,7 @@ let app = express();
  * Setup database
  */
 mongoose.connect(
-    'mongodb://localhost/kissing_puppers', {
+    'mongodb://localhost:27017/kissing_puppers', {
         useNewUrlParser : true,
         useUnifiedTopology: true,
 
