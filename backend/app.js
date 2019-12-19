@@ -18,12 +18,21 @@ let app = express();
  * Setup database
  */
 mongoose.connect(
-    'mongodb://localhost/kissing_puppers',
-    {useNewUrlParser : true}
+    'mongodb://localhost/kissing_puppers', {
+        useNewUrlParser : true,
+        useUnifiedTopology: true,
+
+    }
 );
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB error: '));
+
+/**
+ * Default view engine for errors
+ */
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 /**
  * Setup middleware and routing
