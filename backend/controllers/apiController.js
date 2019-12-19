@@ -13,6 +13,21 @@ exports.next_pupper = function(req, res) {
 };
 
 // Return a random pupper
-exports.random_pupper = function(req, res) {
-    res.json({status: "Not implemented!"});
+exports.random_pupper = function(req, res, next) {
+    Pupper.countDocuments().exec(function(err, count){
+        if(err) {return next(err);}
+        const random = Math.floor(Math.random() * count);
+        
+        Pupper.findOne().skip(random).exec(
+            function(err, result){
+                if(err) {return next(err);}
+                if(result === null) {
+                    error = new Error("Resource not found!");
+                    error.status = 404;
+                    return next(err);
+                }
+                res.json(result);
+            });
+    });
+    
 };
