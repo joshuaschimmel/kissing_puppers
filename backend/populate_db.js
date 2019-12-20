@@ -30,4 +30,5 @@ pupper_array.forEach(pupper => pupper.save(function(err, result){
 }));
 
 // close connection
+// TODO close db after all objects are saved
 // db.close();
